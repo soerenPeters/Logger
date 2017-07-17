@@ -1,28 +1,13 @@
 #ifndef Logger_H
 #define Logger_H
 
+#include "Logger_EXPORT.h"
+
 #include <string>
-#include <sstream>
-#include <memory>
-#include <iostream>
 
-namespace log
+namespace logging 
 {
-	class LogSink
-	{
-	public:
-		virtual void log(const std::string &log)= 0;
-	};
-
-	class ConsoleSink : public LogSink
-	{
-		virtual void log(const std::string &log)
-		{
-			std::cout << log;
-		}
-	};
-
-	class Logger
+	class Logger_EXPORT Logger
 	{
 	public:
 		enum Level
@@ -32,24 +17,22 @@ namespace log
 			LOW = 1
 		};
 
+		Logger();
+		virtual ~Logger();
+
 		static void makeLogger(const std::string &logger);
 
 		static void setDebugLevel(const Level &level = Level::HIGH);
 
-		virtual ~Logger();
+		virtual Logger operator<<(const Level &level);
 
-		virtual Logger operator<<(const Level &level) { this->localLogLevel = level; }
+		virtual Logger operator<<(const std::string log);
 
-		virtual Logger operator<<(const std::string log)
-		{
-			if(localLogLevel >= logLevel)
-				logSink->log(log);
-		}
 
-	protected:
-		static std::unique_ptr<LogSink> logSink;
-		static Level logLevel;
-		static Level localLogLevel;
+	private:
+
+		class impl;
+		impl* pimpl;
 
 	};
 
