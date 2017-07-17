@@ -14,6 +14,8 @@ namespace logging
 		FileSink(const std::string &path);
 		virtual void log(const std::string &log);
 
+		virtual ~FileSink();
+
 	private:
 		void exitProgram(const std::string &path);
 		void logTime();

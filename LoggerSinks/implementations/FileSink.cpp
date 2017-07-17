@@ -19,6 +19,11 @@ namespace logging
 		fprintf(file, log.c_str());
 	}
 
+	FileSink::~FileSink()
+	{
+		fclose(file);
+	}
+
 	void FileSink::exitProgram(const std::string &path)
 	{
 		printf("can't open logging file. %s\n", path.c_str());
