@@ -24,7 +24,7 @@ namespace logging
 
 	Logger::Logger() : pimpl(new impl())
 	{
-
+		impl::logSink = std::unique_ptr<LoggerSink>(new ConsoleSink());
 	}
 
 	Logger::~Logger()

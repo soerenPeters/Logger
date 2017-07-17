@@ -4,7 +4,6 @@ using namespace logging;
 
 int main()
 {
-	Logger::makeLogger("console");
 	Logger::setDebugLevel(Logger::INTERMEDIATE);
 
 	out << Logger::LOW << "not printed\n" << Logger::HIGH << "printed\n";
