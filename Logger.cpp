@@ -31,10 +31,14 @@ namespace logging
 		delete pimpl;
 	}
 
-	void Logger::makeLogger(const std::string &logger)
+	void Logger::makeLogger(const std::string &logger, const std::string &path)
 	{
-		impl::logSink = std::unique_ptr<LoggerSink>(new ConsoleSink());
-
+		if(logger == "console")
+			impl::logSink = std::unique_ptr<LoggerSink>(new ConsoleSink());
+		else if (logger == "file")
+			impl::logSink = std::unique_ptr<LoggerSink>(new FileSink(path));
+		else
+			impl::logSink = std::unique_ptr<LoggerSink>(new StubSink());
 	}
 
 	void Logger::setDebugLevel(const Level &level) 

@@ -5,7 +5,7 @@
 
 #include <string>
 
-namespace logging 
+namespace logging
 {
 	class Logger_EXPORT Logger
 	{
@@ -20,20 +20,14 @@ namespace logging
 		Logger();
 		virtual ~Logger();
 
-		static void makeLogger(const std::string &logger);
-
+		static void makeLogger(const std::string &logger, const std::string &path = "");
 		static void setDebugLevel(const Level &level = Level::HIGH);
-
 		virtual Logger operator<<(const Level &level);
-
 		virtual Logger operator<<(const std::string log);
 
-
 	private:
-
 		class impl;
 		impl* pimpl;
-
 	};
 
 	static Logger out;
