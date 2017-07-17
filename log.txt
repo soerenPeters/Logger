@@ -1,0 +1,6 @@
+
+--START LOGGING : 2017-7-17 14:18:35
+printed to file...
+
+--START LOGGING : 2017-7-17 14:18:35
+printed to file and console...
