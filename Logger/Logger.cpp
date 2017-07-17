@@ -6,6 +6,7 @@
 #include <LoggerSinks/implementations/ConsoleSink.h>
 #include <LoggerSinks/implementations/FileSink.h>
 #include <LoggerSinks/implementations/StubSink.h>
+#include <LoggerSinks/implementations/ConsoleFileSink.h>
 
 namespace logging
 {
@@ -37,6 +38,8 @@ namespace logging
 			impl::logSink = std::unique_ptr<LoggerSink>(new ConsoleSink());
 		else if (logger == "file")
 			impl::logSink = std::unique_ptr<LoggerSink>(new FileSink(path));
+		else if (logger == "console file")
+			impl::logSink = std::unique_ptr<LoggerSink>(new ConsoleFileSink(path));
 		else
 			impl::logSink = std::unique_ptr<LoggerSink>(new StubSink());
 	}
