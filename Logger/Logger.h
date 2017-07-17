@@ -1,13 +1,13 @@
 #ifndef Logger_H
 #define Logger_H
 
-#include "Logger_EXPORT.h"
+#include "../Logger_EXPORT.h"
 
 #include <string>
 
 namespace logging
 {
-	class Logger_EXPORT Logger
+	class /*Logger_EXPORT */Logger
 	{
 	public:
 		enum Level
