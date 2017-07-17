@@ -11,10 +11,8 @@ namespace logging
 
 	class ConsoleSink : public LoggerSink
 	{
-		virtual void log(const std::string &log)
-		{
-			std::cout << log;
-		}
+	public:
+		virtual void log(const std::string &log);
 	};
 
 }

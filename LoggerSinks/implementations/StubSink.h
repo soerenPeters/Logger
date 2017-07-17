@@ -2,7 +2,6 @@
 #define StubSink_H
 
 #include <string>
-#include <iostream>
 
 #include "../LoggerSink.h"
 
@@ -13,7 +12,7 @@ namespace logging
 	{
 		virtual void log(const std::string &log)
 		{
-			std::cout << log;
+			
 		}
 	};
 

@@ -2,19 +2,23 @@
 #define FileSink_H
 
 #include <string>
-#include <iostream>
+#include <ctime>
 
 #include "../LoggerSink.h"
 
 namespace logging
 {
-
 	class FileSink : public LoggerSink
 	{
-		virtual void log(const std::string &log)
-		{
-			std::cout << log;
-		}
+	public:
+		FileSink(const std::string &path);
+		virtual void log(const std::string &log);
+
+	private:
+		void exitProgram(const std::string &path);
+		void logTime();
+
+		FILE *file;
 	};
 
 }
